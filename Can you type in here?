@@ -1,1 +1,7 @@
-hhhhh
+public class Meow 
+{
+public Meow()
+{
+System.out.println ("Meow");
+}
+} 
