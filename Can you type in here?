@@ -1,7 +1,5 @@
-public class Meow 
-{
-public Meow()
-{
-System.out.println ("Meow");
+class OuickStart {
+public static void main (String[I args) {
+System.out.println ("Hello, World.");
 }
-} 
+}
