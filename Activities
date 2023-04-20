@@ -1,0 +1,27 @@
+public class Activities extends Records
+{
+    public Activities()
+    {
+        
+    }
+    public void add()
+    {
+        System.out.println("Please add any activity request for improve Zootopia");
+        Activity activity = new Activity(++id, In.readName("New Activity"), readNumOfPeople("New Activity"));
+        add(activity);
+    }
+    public void add(String name, int numOfPeople)
+    {
+        Activity activity = new Activity(++id, name, numOfPeople);
+        add(activity);
+    }
+    public int readNumOfPeople(String message)
+    {
+        System.out.print("Please enter " + message + " number of people allowed: ");
+        return In.nextInt();
+    }
+    public Activity find(int id)
+    {
+        return (Activity) super.find(id);
+    }
+}
