@@ -1,0 +1,17 @@
+public class Ratings extends Records
+{
+    public Ratings()
+    {
+        
+    }
+    public void add()
+    {
+        System.out.println("Add Ratings");
+        Rating rating = new Rating(++id, In.readName("your"), In.readInt("review star"));
+        add(rating);
+    }
+    public Rating find(int id)
+    {
+        return (Rating) super.find(id);
+    }
+}
