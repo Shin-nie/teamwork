@@ -1,0 +1,30 @@
+public class Rating extends Record
+{
+    private int reviewStar;
+    private boolean inRange;
+    public Rating(int id, String name, int reviewStar)
+    {
+        super(id,name);
+        this.reviewStar= reviewStar;
+    }
+    public int getReviewStar()
+    {
+        return reviewStar;
+    }
+    public void checkReviewStar()
+    {
+        if (reviewStar > 0 && reviewStar <= 5)
+        {
+            inRange = true;
+        }
+        else 
+        {
+            System.out.println("Sorry, please rating between 1-5");
+            inRange = false;
+        }
+    }
+    public String toString()
+    {
+        return super.toString() + " review Star: " + reviewStar;
+    }
+}
