@@ -1,0 +1,47 @@
+public class Activity extends Record
+{
+    private Status status;
+    private int numOfPeople;
+    public Activity(int id, String name, int numOfPeople, Status status)
+    {
+        super(id, name);
+        this.numOfPeople = numOfPeople;
+        this.status = status;
+    }
+    public Activity(int id, String name, int numOfPeople)
+    {
+        super(id, name);
+        this.numOfPeople = numOfPeople;
+        status = Status.AVAILABLE;
+    }
+    public boolean book()
+    {
+        if (status == Status.AVAILABLE)
+        {
+            System.out.println("\tActivity booked: " + name);
+            return true;
+        }
+        else 
+        {
+            System.out.println("\tActivity " + name + " is already full booked.");
+            return false;
+        }
+    }
+    public boolean isAvailable()
+    {
+        return status == Status.AVAILABLE;
+    }
+    public int getNumOfPeople()
+    {
+        return numOfPeople;
+    }
+    public String toString()
+    {
+        String s = super.toString() + " has " + numOfPeople + " people ";
+        if (isAvailable())
+        {
+            s += " is available and";
+        }
+        return s;
+    }
+}
