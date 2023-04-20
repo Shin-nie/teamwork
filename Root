@@ -1,0 +1,117 @@
+import java.util.*;
+/**
+ * class generic Root
+ */
+public class Root
+{
+    private final String NAME = "Zootopia";
+    private Activities activities = new Activities();
+    private Ratings ratings = new Ratings();
+    private Tickets tickets = new Tickets();
+    //add group class objects - call the constructor for each 
+    public Root()
+    {
+        System.out.println("Welcome to " + NAME);
+        setupCurrentActivities();
+        menu();
+    }
+    private void menu()
+    {
+        char action = readAction();
+        switch (action)
+        {
+            case 'S' : addRatingActivity(); break;
+            case 'A' : addNewActivity(); break;
+            case 'T' : sellTicket(); break;
+            //add more menu options
+            case 'X': exit(); break;
+            case '?': help(); break;
+            default: error();
+        }
+    }
+    private void setupCurrentActivities()
+    {
+        activities.add("Feeding Animal", 10);
+        activities.add("Safari Tour", 25);
+        activities.add("Taking Picture", 5);
+        activities.add("Hugging Animal", 5);
+    }
+    private char readAction()
+    {
+        System.out.print("Please enter your choice (S, A, X, ?): ");
+        return In.nextUpperChar();
+    }
+    public void addRatingActivity()
+    {
+        String activityName = displayActivities();
+        System.out.print("Please rate " + activityName + " from 1-5 ");
+        addRatingStar();
+    }
+    public String displayActivities()
+    {
+        System.out.println("Let's choose activity to rate in " + NAME);
+        System.out.println("\t1. Feeding Animal \n\t2. Safari Tour\n\t3. Taking Picture w/Animal\n\t4. Hugging Animal");
+        int option = In.readInt("number of activity");
+        String name = "";
+        switch(option)
+        {
+            case 1: name = "Feeding Animal"; break;
+            case 2: name = "Safari Tour"; break;
+            case 3: name = "Taking Picture w/Animal"; break;
+            case 4: name = "Hugging Animal"; break;
+            default: name = "unknown"; break;
+        }
+        System.out.println("\tYou've choosen " + option + ": " + name);
+        return name;
+    }
+    public void addRatingStar()
+    {
+        ratings.add();
+        System.out.println("Thank you for your rating");
+        menu();
+    }
+    private void addNewActivity()
+    {
+       activities.add();
+       menu();
+    }
+    private void sellTicket()
+    {
+        tickets.sellTicket();
+        System.out.println("The total price: " + tickets.totalPrice());
+        menu();
+    }
+    private void exit()
+    {
+        if (!confirm())
+            menu();
+        else
+            System.out.println("Goodbye");
+    }
+    private boolean confirm()
+    {
+        System.out.print("Are you sure (y/n)?: ");
+        return In.nextUpperChar() == 'Y';
+    }
+    private void help()
+    {
+        System.out.println("Welcome to "+ NAME + "; enter");
+        System.out.println("S for Add Rating to current activity");
+        System.out.println("A for Add New Activity to the " + NAME);
+        System.out.println("X to exit");
+        menu();
+    }
+    private void error()
+    {
+        System.out.println("No action found. Try again");
+        menu();
+    }
+    private void show()
+    {   
+        System.out.println(toString()); 
+    }                
+    public String toString()
+    {  
+        return "";   
+    }
+}
